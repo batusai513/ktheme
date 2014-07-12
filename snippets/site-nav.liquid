@@ -12,6 +12,7 @@
       More info on dropdowns:
         - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
     {% endcomment %}
+
     {% assign child_list_handle = link.title | handleize %}
     {% if linklists[child_list_handle].links != blank %}
       <li class="{% if link.active %} site-nav--active{% endif %}">

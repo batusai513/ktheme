@@ -1,0 +1,12 @@
+<div class="top-bar">
+  <div class="wrapper text-center large--text-right">
+    {% if customer %}
+      Logged in as <a href="/account">{{ customer.first_name }}</a> &middot; {{ 'Log out' | customer_logout_link }}
+    {% else %}
+      {{ 'Log in' | customer_login_link }}
+      {% if shop.customer_accounts_optional %}
+      <span>or</span> {{ 'Create an account' | customer_register_link }}
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

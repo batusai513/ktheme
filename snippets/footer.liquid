@@ -4,6 +4,7 @@
 
     <div class="grid">
 
+      <!--
       {% if settings.footer_display_contact %}
       <div class="grid-item medium--one-half large--one-third">
         <h3>{{ settings.footer_contact_title }}</h3>
@@ -16,34 +17,88 @@
         </p>
       </div>
       {% endif %}
+      -->
+      <div class="grid-item medium--one-half large--one-quarter">
+        <h3 class="h5">Quick Links</h3>
+        {% for link in linklists.footer.links %}
+          {% assign child_list_handle = link.title | handleize %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
 
+      </div>
       {% if settings.footer_display_social %}
-      <div class="grid-item medium--one-half large--one-third">
-        <h3>{{ settings.footer_social_title }}</h3>
+      <div class="grid-item medium--one-half large--one-quarter">
+        <h3 class="h5">{{ settings.footer_social_title }}</h3>
 
         {% comment %}
           Loop through the persistent theme settings and list out each social network link.
         {% endcomment %}
         <ul class="inline-list social-icons">
-          {% if settings.twitter_link != blank %}<li class="twitter"><a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter">T</a></li>{% endif %}
-          {% if settings.facebook_link != blank %}<li class="facebook"><a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook">f</a></li>{% endif %}
-          {% if settings.pinterest_link != blank %}<li class="pinterest"><a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest">p</a></li>{% endif %}
-          {% if settings.google_plus_link != blank %}<li class="google-plus"><a href="{{ settings.google_plus_link }}" title="{{ shop.name }} on Google+">g</a></li>{% endif %}
-          {% if settings.instagram_link != blank %}<li class="instagram"><a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram">i</a></li>{% endif %}
-          {% if settings.tumblr_link != blank %}<li class="tumblr"><a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr">t</a></li>{% endif %}
-          {% if settings.youtube_link != blank %}<li class="youtube"><a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube">y</a></li>{% endif %}
-          {% if settings.vimeo_link != blank %}<li class="vimeo"><a href="{{ settings.vimeo_link }}" title="{{ shop.name }} on Vimeo">v</a></li>{% endif %}
-          {% if settings.fancy_link != blank %}<li class="fancy"><a href="{{ settings.fancy_link }}" title="{{ shop.name }} on Fancy">F</a></li>{% endif %}
+          {% if settings.twitter_link != blank %}
+            <li class="twitter">
+              <a href="{{ settings.twitter_link }}" class="icon-twitter" title="{{ shop.name }} on Twitter"></a>
+            </li>
+          {% endif %}
+          {% if settings.facebook_link != blank %}
+            <li class="facebook">
+              <a href="{{ settings.facebook_link }}" class="icon-facebook" title="{{ shop.name }} on Facebook"></a>
+            </li>
+          {% endif %}
+          {% if settings.pinterest_link != blank %}
+            <li class="pinterest">
+              <a href="{{ settings.pinterest_link }}" class="icon-pinterest" title="{{ shop.name }} on Pinterest"></a>
+            </li>
+          {% endif %}
+          {% if settings.google_plus_link != blank %}
+            <li class="google-plus
+              "><a href="{{ settings.google_plus_link }}" class="icon-googleplus" title="{{ shop.name }} on Google+"></a>
+            </li>{% endif %}
+            {% if settings.instagram_link != blank %}
+            <li class="instagram">
+              <a href="{{ settings.instagram_link }}" class="icon-instagram" title="{{ shop.name }} on Instagram"></a>
+            </li>
+            {% endif %}
+          {% if settings.tumblr_link != blank %}
+            <li class="tumblr">
+              <a href="{{ settings.tumblr_link }}" class="icon-tumblr" title="{{ shop.name }} on Tumblr"></a>
+            </li>
+          {% endif %}
+          {% if settings.youtube_link != blank %}
+            <li class="youtube">
+              <a href="{{ settings.youtube_link }}" class="icon-youtube" title="{{ shop.name }} on YouTube"></a>
+            </li>
+          {% endif %}
+          {% if settings.vimeo_link != blank %}
+            <li class="vimeo">
+              <a href="{{ settings.vimeo_link }}" class="icon-vimeo" title="{{ shop.name }} on Vimeo"></a>
+            </li>
+          {% endif %}
+          {% if settings.fancy_link != blank %}
+            <li class="fancy">
+              <a href="{{ settings.fancy_link }}" class="icon-fancy" title="{{ shop.name }} on Fancy"></a>
+            </li>
+          {% endif %}
         </ul>
       </div>
       {% endif %}
 
       {% if settings.footer_display_newsletter %}
-      <div class="grid-item large--one-third">
-        <h3>{{ settings.footer_newsletter_title }}</h3>
+      <div class="grid-item large--one-quarter medium--one-half">
+        <h3 class="h5">{{ settings.footer_newsletter_title }}</h3>
         {% include 'newsletter-form' %}
       </div>
       {% endif %}
+
+      <div class="grid-item large--one-quarter medium--one-half">
+        <p class="text-center medium--text-right large--text-right">
+          Copyright {{shop.name}}, {{ 'now' | date: '%Y' }}. <br>
+          <a href="http://shopify.com/timber">Timber</a> by <a href="http://www.shopify.com?ref=Timber">Shopify</a><br>
+          <small>{{ powered_by_link }}</small>
+        </p>
+      </div>
+
     </div>
 
     <hr>
@@ -72,11 +127,6 @@
       {% endfor %}
     </ul>
     {% endunless %}
-
-    <p class="text-center">
-      <a href="http://shopify.com/timber">Timber</a> by <a href="http://www.shopify.com?ref=Timber">Shopify</a><br>
-      <small>{{ powered_by_link }}</small>
-    </p>
 
   </div>
 

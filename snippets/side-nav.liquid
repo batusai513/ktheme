@@ -1,0 +1,6 @@
+{% for collection in collections %}
+  {{ collection.title }}
+  {% for product in collection.products %}
+    -{{ product.title }}
+  {% endfor %}
+{% endfor %}
